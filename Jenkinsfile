@@ -16,7 +16,7 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId:"jenkinsDocker",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    sh "docker tag node-app-test-new ${env.dockerHubUser}/node-app-test-new:latest"
+                    sh "docker tag node-app-test-new ${env.dockerHubUser}/node-app-test-new:v1"
                     sh "docker push ${env.dockerHubUser}/node-app-test-new:v1" 
                 }
             }
